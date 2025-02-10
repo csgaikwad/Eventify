@@ -35,6 +35,8 @@ const io = new Server(httpServer, {
   cors: {
     origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"], // Frontend's URL in production
     methods: ["GET", "POST"],
+    credentials: true,
+    allowedHeaders: ["Content-Type"],
   },
 });
 setupSocket(io);
@@ -46,8 +48,10 @@ connectDB();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"], // Replace with your frontend URL
-    credentials: true, // Allow cookies to be sent
+    origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"],
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 app.use(express.json());
