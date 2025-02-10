@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+body {
+  scroll-behavior: smooth;
+  @apply bg-[#021526] text-white;
+}
+
+.hideScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+:root::-webkit-scrollbar {
+  width: 10px;
+}
+
+:root::-webkit-scrollbar-thumb {
+  border-radius: 5rem;
+  background-color: #6eacda;
+}
+
+:root::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+h1 {
+  @apply text-2xl font-bold mb-4;
+}
+input {
+  @apply border-2 border-blue-200 my-1 rounded-md px-2 py-1 outline-none caret-teal-50;
+}
+input {
+  color-scheme: dark;
+}
+
+.submitButton {
+  @apply bg-cyan-50 text-cyan-900 font-semibold border-2 border-blue-100 my-4 rounded-md px-2 py-1 cursor-pointer hover:scale-105 duration-150;
+}
