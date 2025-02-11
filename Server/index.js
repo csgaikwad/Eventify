@@ -54,6 +54,8 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],  // Add Authorization if using tokens
   })
 );
+app.options("*", cors()); // Handle preflight requests for all routes
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
