@@ -48,7 +48,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"],
+    origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app"],
     credentials: true,
     methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],  // Add Authorization if using tokens
