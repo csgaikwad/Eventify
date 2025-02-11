@@ -36,7 +36,7 @@ const io = new Server(httpServer, {
     origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"], // Frontend's URL in production
     methods: ["GET", "POST"],
     credentials: true,
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   },
 });
 setupSocket(io);
@@ -51,7 +51,7 @@ app.use(
     origin: ["http://localhost:5173", "https://eventify-ssg.vercel.app/"],
     credentials: true,
     methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],  // Add Authorization if using tokens
   })
 );
 app.use(express.json());

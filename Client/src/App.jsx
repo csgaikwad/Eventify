@@ -22,8 +22,13 @@ function App() {
   const setUser = useSetRecoilState(userAtom);
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get("/user/me");
-      setUser(response.data.user);
+      try {
+        const response = await axios.get("/user/me");
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        setUser(null); // Clear user data on error
+      }
     };
     fetchUser();
   }, []);
