@@ -20,7 +20,7 @@ export default function Navbar() {
         Eventify
       </h1>
       {user ? (
-        <h2 className="hidden md:block">Welcome, {user.userName}</h2>
+        <h2 className="hidden md:block cursor-default hover:scale-105 duration-100">Welcome, {user.userName}</h2>
       ) : (
         <Link to={"/login"} className="border-2 p-2 rounded-md">
           Login

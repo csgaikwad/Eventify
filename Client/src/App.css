@@ -35,3 +35,9 @@ input {
 .submitButton {
   @apply bg-cyan-50 text-cyan-900 font-semibold border-2 border-blue-100 my-4 rounded-md px-2 py-1 cursor-pointer hover:scale-105 duration-150;
 }
+
+
+.hoverShadow:hover {
+  box-shadow: 0 0px 25px rgba(59, 130, 246, 0.5);
+  transition: all 0.2s ease;
+}

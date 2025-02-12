@@ -18,14 +18,21 @@ export default function Menu() {
     }
   };
   return (
-    <div className="bg-[#6EACDA]  p-2 flex flex-col gap-2 rounded-2xl text-nowrap">
-      <span className="border-b-2">Menu</span>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/create-event"}>Create event</Link>
-      <Link to={"/login"}>Login</Link>
-      <h2 className="cursor-pointer" onClick={logout}>
-        Logout
-      </h2>
+    <div className="border-[#6EACDA] border-2 text-[#6EACDA] bg-[#03346E] p-2  rounded-2xl ">
+      <span>Menu</span>
+
+      <div
+        className="mt-2 flex flex-col text-nowrap gap-2
+                  [&>*]:border-t-2 [&>*]:pt-1 "
+      >
+        <Link to={"/"}>Home</Link>
+        <Link to={"/create-event"}>Create event</Link>
+        <Link to={"/login"}>Login</Link>
+        <Link to={"/Register"}>Register</Link>
+        <h2 className="cursor-pointer" onClick={logout}>
+          Logout
+        </h2>
+      </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { io } from "socket.io-client";
+import EventDetails from "../Components/EventDetails";
 
 export default function Event() {
   const { id } = useParams();
@@ -10,12 +11,11 @@ export default function Event() {
   const [userCount, setUserCount] = useState(0);
   const navigate = useNavigate();
 
-
-
   // Socket connection to track the total user count for this event
   useEffect(() => {
     // Replace with your socket server URL if different
-    const socket = io("http://localhost:8000", { transports: ["websocket"] });
+    const ServerUrl = import.meta.env.VITE_SERVER_URL;
+    const socket = io(ServerUrl, { transports: ["websocket"] });
 
     socket.on("connect", () => {
       console.log("Connected:", socket.id);
@@ -52,7 +52,7 @@ export default function Event() {
       }
     }
     fetchEvent();
-scrollTo(0,0)
+    scrollTo(0, 0);
   }, [id, navigate]);
 
   return (
@@ -64,20 +64,10 @@ scrollTo(0,0)
       ) : (
         <div className="bg-[#03346E] p-6 shadow-lg rounded-lg relative">
           <div className="animate-pulse bg-[#6EACDA] h-60 border-2 mb-5"></div>
-          <h1 className="text-3xl font-bold">{event.name}</h1>
-          <p className="text-gray-200">{event.description}</p>
-          <p className="text-sm text-gray-100">
-            Date: {new Date(event.eventDate).toLocaleDateString()}
+          <EventDetails event={event} />
+          <p className="text-md bg-green-900 rounded-md absolute left-0 top-0 px-2">
+            Total Attendees: {userCount}
           </p>
-          <p className="text-sm text-gray-100">
-            Duration: {event.duration} mins
-          </p>
-          {event.organizer && (
-            <p className="text-sm text-gray-100">
-              Organiser: {event.organizer.userName}
-            </p>
-          )}
-          <p className="text-md bg-green-900 rounded-md absolute left-0 top-0 px-2">Total Attendees: {userCount}</p>
         </div>
       )}
     </div>
