@@ -12,9 +12,12 @@ export default function Login() {
   const [password, setPassword] = useState("SecurePass123!");
   const navigate = useNavigate();
   const setUser = useSetRecoilState(userAtom);
+  const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Disable button on form submission
+
     try {
       const response = await axios.post("/user/login", { userEmail, password });
       console.log(response.data.user);
@@ -30,6 +33,8 @@ export default function Login() {
         position: "top-right",
         autoClose: 3000,
       });
+    } finally {
+      setIsLoading(false); // Re-enable button after request completes
     }
   };
 
@@ -51,8 +56,8 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="submitButton">
-          Submit
+        <button type="submit" className="submitButton" disabled={isLoading}>
+          {isLoading ? "Logging in..." : "Submit"}
         </button>
       </form>
       <h2 className="cursor-pointer" onClick={() => navigate("/register")}>

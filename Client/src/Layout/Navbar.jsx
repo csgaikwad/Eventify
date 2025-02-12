@@ -20,7 +20,9 @@ export default function Navbar() {
         Eventify
       </h1>
       {user ? (
-        <h2 className="hidden md:block cursor-default hover:scale-105 duration-100">Welcome, {user.userName}</h2>
+        <h2 className="hidden md:block cursor-default hover:scale-105 duration-100">
+          Welcome, {user.userName}
+        </h2>
       ) : (
         <Link to={"/login"} className="border-2 p-2 rounded-md">
           Login
@@ -41,15 +43,14 @@ export default function Navbar() {
           className="cursor-pointer hover:scale-105 duration-150"
           onClick={() => setShow(!show)}
         />
-        {show && (
-          <div
-            className="absolute left-0 mt-2 shadow-lg rounded-md z-30"
-            ref={menuRef}
-            tabIndex={-1}
-          >
-            <Menu />
-          </div>
-        )}
+
+        <div
+          className="absolute left-0 mt-2 shadow-lg rounded-md z-30"
+          ref={menuRef}
+          tabIndex={-1}
+        >
+          <Menu show={show} />
+        </div>
       </div>
     </div>
   );

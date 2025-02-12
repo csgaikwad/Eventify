@@ -41,3 +41,8 @@ input {
   box-shadow: 0 0px 25px rgba(59, 130, 246, 0.5);
   transition: all 0.2s ease;
 }
+
+Link:hover{
+@apply bg-red-500
+
+}
