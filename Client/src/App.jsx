@@ -15,7 +15,7 @@ import { userAtom } from "./atoms/userAtom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
+axios.defaults.baseURL = `${import.meta.env.VITE_SERVER_URL}/api/v1`;
 axios.defaults.withCredentials = true;
 
 function App() {

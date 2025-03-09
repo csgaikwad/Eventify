@@ -20,7 +20,7 @@ export default function Login() {
 
     try {
       const response = await axios.post("/user/login", { userEmail, password });
-      console.log(response.data.user);
+      // console.log(response.data.user);
       setUser(response.data.user);
       toast.success("Login successful!", {
         position: "top-right",
