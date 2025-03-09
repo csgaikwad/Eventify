@@ -6,8 +6,12 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   server: {
     proxy: {
-      // "/api": "http://localhost:8800",
-      "/api": "https://eventify-535o.onrender.com",
+      "/api/v1": {
+        // target: "http://localhost:8800",
+        target: "https://eventify-535o.onrender.com",
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
   plugins: [react(), tailwindcss()],
